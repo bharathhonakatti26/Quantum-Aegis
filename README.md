@@ -1,74 +1,83 @@
-# Quantum Aegis: Quantum-Resilient Cryptographic Framework
+# ⚔️ Quantum Aegis: Quantum-Resilient Cryptographic Framework
 
-This project demonstrates a hybrid cryptographic stack using AES-256-GCM, Kyber-768, Dilithium-3, and SHA3-256 for quantum-safe secure communication.
+Quantum Aegis is an **Hybrid Cryptographic Demo** that combines classical and post-quantum primitives to demonstrate a **quantum-resistant secure communication flow**.  
+It pairs **AES-256-GCM** for symmetric confidentiality, **SHA3-256** for hashing, and **PQC algorithms (Kyber for KEM, Dilithium for signatures)** for key exchange and authentication.
 
-## Structure
-- `demo.py`: Demo app entry point
-- `main.py`: App entry point
-- `key_exchange.py`: Kyber key exchange
-- `signature.py`: Dilithium digital signatures
-- `encryption.py`: AES-256-GCM encryption/decryption
-- `hashing.py`: SHA3-256 hashing
+---
 
-## Setup
-1. Install dependencies:
+## 🔑 Highlights
+- **Hybrid stack:** AES-256-GCM + Kyber (KEM) + Dilithium (signatures) + SHA3-256  
+- **Post-quantum ready:** Resistant against both classical and quantum adversaries  
+- **Modular design:** Small, well-segregated modules (`key_exchange.py`, `signature.py`, `encryption.py`, `hashing.py`)  
+- **Developer-friendly:** Easy to run in a Python `venv` on Linux (recommended)  
+- **Educational:** Great for demonstrating PQC integration into real-world protocols  
+
+---
+
+## 🏗️ Architecture Diagram
+
+```text
+               ⚔️ Quantum Aegis — Secure Flow
+
+     ┌──────────────┐                            ┌──────────────┐
+     │    Client    │                            │    Server    │
+     └──────┬───────┘                            └──────┬───────┘
+            │                                         │
+            │     1. Kyber Key Exchange (KEM)         │
+            │─────────────── Public Key ─────────────▶│
+            │◀────────────── Ciphertext ───────────── │
+            │                                         │
+            │     Shared Secret (ss) established      │
+            │                                         │
+            │     2. Dilithium Signature              │
+            │───────────── Signed Message ───────────▶│
+            │◀──────────── Verification ───────────── │
+            │                                         │
+            │     3. AES-256-GCM Encryption           │
+            │────────────── Encrypted Msg ───────────▶│
+            │◀────────────── Encrypted Reply ──────── │
+            │                                         │
+            │     4. SHA3-256 Hashing (Integrity)     │
+            │────────────── Hash Digest ─────────────▶│
+            │                                         │
+     ┌──────┴───────┐                            ┌──────┴───────┐
+     │  Post-Quantum│                            │  Post-Quantum│
+     │   Security   │                            │   Security   │
+     └──────────────┘                            └──────────────┘
+```
+
+## 📂 Project Structure
+Quantum_Aegis/
+│── demo.py          # Demo runner
+│── main.py          # CLI entry point
+│── key_exchange.py  # Kyber KEM operations
+│── signature.py     # Dilithium signatures
+│── encryption.py    # AES-256-GCM encryption/decryption
+│── hashing.py       # SHA3-256 hashing helpers
+│── requirements.txt # Python dependencies
+│── README.md        # Project documentation
+
+
+## ⚙️ Setup
+   1. Install prerequisites (Linux, e.g. Ubuntu/Kali/Debian)
    ```bash
-   pip install -r requirements.txt
-   ## Quantum Aegis
-
-   Quantum Aegis is an open-source, hybrid cryptographic demo that combines classical and post-quantum primitives to demonstrate a quantum-resistant secure communication flow. It pairs AES-256-GCM for symmetric confidentiality, SHA3-256 for hashing, and PQC algorithms (Kyber for KEM, Dilithium for signatures) for key exchange and authentication.
-
-   This repository is intended for developers and researchers who want a simple, runnable example of hybrid crypto primitives on Linux (recommended) and other platforms.
-
-   ## Highlights
-   - Hybrid stack: AES-256-GCM + Kyber (KEM) + Dilithium (signatures) + SHA3-256
-   - Small, well-segregated modules: `key_exchange.py`, `signature.py`, `encryption.py`, `hashing.py`, and `main.py`
-   - Focused on being easy to run inside a Python virtual environment (venv)
-
-   ## Quick checklist (what this README provides)
-   - System prerequisites for Linux (Debian/Ubuntu/Derivatives)
-   - Steps to create and activate a `venv` and install Python deps from `requirements.txt`
-   - Optional instructions to build/install liboqs when prebuilt wheels are not available
-   - How to run the demo and the CLI
-   - Configuration options and environment variables
-   - Contributing, testing, and licensing guidance for open-source use
-
-   ## Assumptions
-   - You want the project to be runnable on Linux (Ubuntu/Debian are referenced). If you need explicit Windows or macOS steps, open an issue or PR and I will add them.
-
-   ## Prerequisites (Linux)
-   Install basic build tools and libraries (Debian/Ubuntu example):
-
-   ```bash
-   sudo apt update; sudo apt install -y python3 python3-venv python3-pip build-essential cmake git libssl-dev pkg-config
+   sudo apt update
+   sudo apt install -y python3 python3-venv python3-pip build-essential cmake git libssl-dev pkg-config
    ```
-
-   Notes:
-   - On many Linux distributions, `pip install -r requirements.txt` will work and will install the Python `oqs` wheel. If a wheel for your platform/Python isn't available, see the "Optional: Build liboqs from source" section.
-
-   ## Python virtual environment (recommended) — Linux
-   All development and demo runs should happen inside a Python virtual environment on Linux (bash/zsh).
-
-   Create, activate, install dependencies, and verify (Linux):
-
+   2. Create & activate a virtual environment
    ```bash
-   # create the virtual environment
    python3 -m venv venv
-
-   # activate it (bash / zsh)
    source venv/bin/activate
-
-   pip install --upgrade pip
-   pip install oqs
-
-   # when finished, deactivate
-   deactivate
    ```
+   3. Install dependencies
+   ```bash
+   pip install --upgrade pip
+   pip install -r requirements.txt
+   ```
+   If pip install oqs fails due to missing wheels, see the Optional: Build liboqs from source section below.
 
-   If `pip install -r requirements.txt` fails on `oqs`, follow the "Optional: Build and install liboqs" section below.
-
-   ## Optional: Build and install liboqs (if pip wheel not available)
-   Use this only if `pip install oqs` fails due to missing wheels on your platform. These steps clone and build liboqs and then install the Python bindings.
+   4. Optional: Build liboqs from source
+   Use this only if the oqs wheel is unavailable for your Python version/platform.
 
    ```bash
    git clone --branch main https://github.com/open-quantum-safe/liboqs.git
@@ -80,36 +89,20 @@ This project demonstrates a hybrid cryptographic stack using AES-256-GCM, Kyber-
    pip install oqs --no-binary oqs
    ```
 
-   Depending on your distro, you may need to install additional -dev packages for OpenSSL or GMP.
-
-   ## Installable dependencies
-   The Python dependencies used by this project are listed in `requirements.txt`. At time of writing they include:
-
-   - `oqs` — Python bindings to Open Quantum Safe (Kyber/Dilithium)
-   - `cryptography` — general cryptography primitives used for AES/GCM helpers
-   - `pycryptodome` — utility crypto primitives
-
-   Always prefer `pip install -r requirements.txt` inside the activated venv.
-
-   ## Run the demo
-   With the venv activated and dependencies installed, run the demo entry point:
-
+   🚀 Run the Demo
+   With your venv active:
    ```bash
    python main.py
    ```
 
-   What to expect: `main.py` exercises the key exchange, signature and encryption modules to demonstrate end-to-end hybrid encryption and verification flows. The output is printed to stdout and minimal example files/keys (if any) will be created in the working directory.
+   Expected:
 
-   ## Files and responsibilities
-   - `demo.py` — demo / example runner
-   - `main.py` — (if present) CLI wrapper for common operations
-   - `key_exchange.py` — Kyber-based KEM operations (keygen, encaps, decaps)
-   - `signature.py` — Dilithium signature generation & verification
-   - `encryption.py` — AES-256-GCM encryption/decryption helpers
-   - `hashing.py` — SHA3-256 helpers and test vectors
-   - `requirements.txt` — Python dependency manifest
-
-   When changing code, keep the public functions stable, and add tests for behavior changes.
+   - Key exchange using Kyber
+   - Digital signature with Dilithium
+   - Symmetric encryption with AES-GCM
+   - Hashing with SHA3-256
+   - Console logs showing secure communication flow
+   - You can modify `demo.py` to experiment with different messages or flows.
 
    ## Configuration
    You can control runtime behavior with environment variables.
@@ -129,16 +122,14 @@ This project demonstrates a hybrid cryptographic stack using AES-256-GCM, Kyber-
    pytest -q
    ```
 
-   ## Security and notes
-   - This project is a demo and should not be used as-is for production secrets management. Use it as a reference or learning tool.
-   - Keep private keys off source-control. If you add example key files, add them to `.gitignore`.
-   - Follow responsible disclosure for security issues by opening an issue or emailing the maintainer.
+   ## 🔒 Security Notes
+   - This project is a demo and not production-ready.
+   - Do not use for protecting real secrets.
+   - Private keys must be kept out of source control (add to .gitignore).
 
-   ## Contact / Maintainer
-
-   Maintainer: Bharath Honakatti
-
-   Portfolio: https://bharathhonakatti26.github.io/portfolio/
+   ## 👨‍💻 Maintainer
+   Bharath Honakatti
+   🌐 Portfolio: https://bharathhonakatti26.github.io/portfolio/
 
    ## References
    - Open Quantum Safe: https://github.com/open-quantum-safe/liboqs
