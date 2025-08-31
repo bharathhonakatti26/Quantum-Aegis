@@ -47,6 +47,7 @@ It pairs **AES-256-GCM** for symmetric confidentiality, **SHA3-256** for hashing
 ```
 
 ## 📂 Project Structure
+<pre>
 Quantum_Aegis/
 ├── demo.py                    # 🎯 Minimal demo runner<br>
 ├── main.py                    # 🚀 Application launcher (runs full hybrid PQC flow)<br>
@@ -56,6 +57,7 @@ Quantum_Aegis/
 ├── hashing.py                 # 🌀 SHA3-256 hashing helpers<br>
 ├── requirements.txt           # 📦 Python dependencies<br>
 └── README.md                  # 📖 Project documentation<br>
+</pre>
 
 ## ⚙️ Setup
    1. Install prerequisites (Linux, e.g. Ubuntu/Kali/Debian)
