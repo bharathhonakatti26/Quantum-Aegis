@@ -48,15 +48,17 @@ It pairs **AES-256-GCM** for symmetric confidentiality, **SHA3-256** for hashing
 
 ## 📂 Project Structure
 Quantum_Aegis/
-│── demo.py          # Demo runner
-│── main.py          # CLI entry point
-│── key_exchange.py  # Kyber KEM operations
-│── signature.py     # Dilithium signatures
-│── encryption.py    # AES-256-GCM encryption/decryption
-│── hashing.py       # SHA3-256 hashing helpers
-│── requirements.txt # Python dependencies
-│── README.md        # Project documentation
+│
+├── demo.py # 🎯 Demo runner
+├── main.py # 🚀 CLI entry point
 
+├── key_exchange.py # 🔑 Kyber KEM operations
+├── signature.py # ✍️ Dilithium digital signatures
+├── encryption.py # 🔒 AES-256-GCM encryption/decryption
+├── hashing.py # 🌀 SHA3-256 hashing helpers
+
+├── requirements.txt # 📦 Python dependencies
+└── README.md # 📖 Project documentation
 
 ## ⚙️ Setup
    1. Install prerequisites (Linux, e.g. Ubuntu/Kali/Debian)
@@ -92,7 +94,7 @@ Quantum_Aegis/
    🚀 Run the Demo
    With your venv active:
    ```bash
-   python main.py
+   python3 main.py
    ```
 
    Expected:
@@ -129,11 +131,12 @@ Quantum_Aegis/
 
    ## 👨‍💻 Maintainer
    Bharath Honakatti
-   🌐 Portfolio: https://bharathhonakatti26.github.io/portfolio/
+   🌐 **Portfolio:** [bharathhonakatti26.github.io](https://bharathhonakatti26.github.io/portfolio/)
+
 
    ## References
-   - Open Quantum Safe: https://github.com/open-quantum-safe/liboqs
-   - NIST PQC competition: https://csrc.nist.gov/projects/post-quantum-cryptography
+   - [Open Quantum Safe (liboqs)](https://github.com/open-quantum-safe/liboqs)
+   - [NIST Post-Quantum Cryptography Project](https://csrc.nist.gov/projects/post-quantum-cryptography)
 
    ---
 
