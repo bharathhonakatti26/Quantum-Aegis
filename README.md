@@ -49,16 +49,16 @@ It pairs **AES-256-GCM** for symmetric confidentiality, **SHA3-256** for hashing
 ## 📂 Project Structure
 Quantum_Aegis/
 │
-├── demo.py # 🎯 Demo runner
-├── main.py # 🚀 CLI entry point
+├── demo.py # 🎯 Demo runner<br>
+├── main.py # 🚀 CLI entry point<br>
 
-├── key_exchange.py # 🔑 Kyber KEM operations
-├── signature.py # ✍️ Dilithium digital signatures
-├── encryption.py # 🔒 AES-256-GCM encryption/decryption
-├── hashing.py # 🌀 SHA3-256 hashing helpers
+├── key_exchange.py # 🔑 Kyber KEM operations<br>
+├── signature.py # ✍️ Dilithium digital signatures<br>
+├── encryption.py # 🔒 AES-256-GCM encryption/decryption<br>
+├── hashing.py # 🌀 SHA3-256 hashing helpers<br>
 
-├── requirements.txt # 📦 Python dependencies
-└── README.md # 📖 Project documentation
+├── requirements.txt # 📦 Python dependencies<br>
+└── README.md # 📖 Project documentation<br>
 
 ## ⚙️ Setup
    1. Install prerequisites (Linux, e.g. Ubuntu/Kali/Debian)
@@ -107,7 +107,7 @@ Quantum_Aegis/
    - You can modify `demo.py` to experiment with different messages or flows.
 
    ## Configuration
-   You can control runtime behavior with environment variables.
+   You can control runtime behavior with environment variables.<br>
    Recommended variables:
 
    - `QA_LOG_LEVEL` — logging level (e.g., `INFO`, `DEBUG`, default: `INFO`)
@@ -130,7 +130,7 @@ Quantum_Aegis/
    - Private keys must be kept out of source control (add to .gitignore).
 
    ## 👨‍💻 Maintainer
-   Bharath Honakatti
+   Bharath Honakatti<br>
    🌐 **Portfolio:** [bharathhonakatti26.github.io](https://bharathhonakatti26.github.io/portfolio/)
 
 
